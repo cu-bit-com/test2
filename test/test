@@ -1,0 +1,1182 @@
+{assign var="showUsedPointsColumn" value={$display_rules.frontend.columnUsedPoints && $order_info.order_applied_points && ($order_info.order_type != "1")}}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0062)https://www.whiteimage.biz/clients/iqos/2019/no161/index2.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+  <meta content="width=700" name="viewport">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>IQOS</title>
+
+  <style type="text/css">
+    @media only screen and (max-width: 540px) {
+      .for_mobile {
+        display: block !important;
+        max-height: none !important;
+      }
+
+      .for_desktop {
+        display: none !important;
+      }
+
+
+    @media (prefers-color-scheme: light) {
+      .color_scheme {
+        background-color: #FFFFFF !important;
+        color: #000001 !important;
+      }
+    }
+    }
+  </style>
+</head>
+<body style= "width: 700px; margin: auto;">
+  <div style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+  </div>
+  
+   {assign var="productIDs" value=[1723, 1724, 1725, 1726, 1714, 1715, 1716, 1717, 1653, 1656, 1655, 1654, 1418, 1419, 1420, 1421, 1571, 1572]}
+  {foreach from=$productIDs key=productIDindex item=productID name=foo}
+    {foreach from=$order_info.products key="key" item="oi"}
+       {if {$oi['product_id']} == $productID}
+            {assign var="sum_all_foreach" value=$sum_all_foreach+$oi.amount} 
+        {/if}
+    {/foreach}
+  {/foreach}
+  
+  
+  <div align="center" style="margin:0 auto; max-width:700px;">
+    <table width="700" border="0" cellspacing="0" cellpadding="0" style="max-width:700px;">
+      <tbody>
+        <tr>
+          <td>
+            <!--[if (gte mso 9)|(IE)]>
+                      <table width="700" align="center" cellpadding="0" cellspacing="0" border="0" class="fix-width-table" style="text-align: center; margin: 0 auto;">
+                        <tr>
+                          <td>
+                    <![endif]-->
+          </td>
+        </tr>
+
+        <tr>
+          <td height="10"></td>
+        </tr>
+
+        <tr>
+          <td height="10"></td>
+        </tr>
+
+        <!-- BEGIN Iqos stripe -->
+        <tr>
+          <td align="center" valign="top" style="width: 700px;"><img src="https://d3hvodq7wnhe8p.cloudfront.net/kbs/newslettere/nl-01-dcs-confirmare-cont/iqos-nl2021-stipe-logo.png" alt="" width="700" border="0" style="display:block;"></td>
+        </tr>
+        <!-- END Iqos stripe -->
+
+        <!-- BEGIN header comanda procesata -->
+        <tr>
+          <td align="center" valign="top" style="font-size:1px; width: 700px;"><img src="https://d3hvodq7wnhe8p.cloudfront.net/kbs/newslettere/nl-06-dcs-comanda-procesata/iqos-nl-2021-header-comanda-procesata_1.png" alt="" width="700" border="0" style="display:block;"></td>
+        </tr>
+        <!-- END header comanda procesata -->
+
+
+        <!-- BEGIN Draga gasesti mai jos detaliile comenzii -->
+        <tr>
+          <td align="center" valign="top" style="background-color: #F9F7F4;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="50">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td width="90%" align="center" valign="top"><span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 28px; line-height: 18px; color:#34303D; font-weight: bold;">Drag&#259; {$order_info.firstname}, </span></td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="40">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td width="90%" align="center" valign="top">
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      {$product = $order_info.products|reset}
+                      {if $order_info.trade_in_order && $product.extra.trade_in_codentify}
+                        {$trade_in_codentify = $product.extra.trade_in_codentify}
+                        {$trade_in_second_codentify = $product.extra.trade_in_second_codentify}
+                        Ne bucurăm că ai ales programul Trade-in.
+                        <br>
+                        În curând vei fi contactat de curier pentru a-ți livra personal noul dispozitiv, pe baza actului tău de identitate. <b>Nu uita să oferi la schimb curierului dispozitivul vechi cu seria {$trade_in_codentify}{if $trade_in_second_codentify}, {$trade_in_second_codentify}{/if}.</b> Nu este nevoie să ai cablul de încărcare, cutia originală sau alte accesorii complementare.
+                        <br>
+                        Mai jos găsești detaliile comenzii tale.
+                      {else}
+                        {if $order_info.shipping[0]['shipping']|strstr:"Tazz"}
+                        
+                        Găseşti mai jos detaliile comenzii tale indiferent de metoda de livrare (curier/ livrare rapidă prin Tazz/ ridicare personală din locațiile disponibile). Atât curierii, cât și personalul din punctele de livrare sunt instruiți să predea coletul pe baza actului tău de identitate.	
+                        
+                        {else}
+                        <!--G&#259;se&#351;ti mai jos detaliile comenzii, iar cur&#226;nd un curier va prelua
+                        <br>
+                        coletul pentru a &#355;i-l livra personal, pe baza actului t&#259;u de identitate.-->
+                        
+                        Imediat ce comanda pornește către tine, îți vom transmite prin e-mail numărul <b><span style="color: #00d1d2">AWB</span></b> de urmărire a coletului. 
+                        <br><br>
+                        
+                        
+                       {*  Găseşti mai jos detaliile comenzii tale indiferent de metoda de livrare 
+                       {if $order_info.shipping[0]['shipping']|strstr:"Tazz"}                        (curier/ livrare rapidă prin Tazz/ ridicare personală din locațiile disponibile).
+                        {else} (curier/ ridicare personală din locațiile disponibile). 
+                        {/if} *}
+                        Atât curierii, cât și personalul din punctele de livrare sunt instruiți să predea coletul pe baza actului tău de identitate.
+                        <br><br>
+                       
+                        {if $order_info.s_state_descr == 'BUCURESTI' || $order_info.s_state_descr == 'ILFOV'}
+                      {*  *Pentru <b>București</b>, comenzile plasate de luni până vineri  până în ora 11:25 livrarea se va face în aceeași zi.<br>
+                         <span>Termenul standard de livrare este de <b>1 – 3 zile lucrătoare</b>.</span><br>
+                        {else}
+                            <span style="font-size: 16px;">*Termenul standard de livrare este de <span style="color: #00d1d2"><b>1 – 3 zile lucrătoare</b></span>.</span><br>
+                        {/if}
+                        *}
+                        {/if}
+                      {/if}
+                     </span> 
+                  </td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="70">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+          </table>
+        </td>
+        </tr>
+        <!-- END Draga gasesti mai jos detaliile comenzii -->
+
+ <!-- Single IQOS Originals -->
+        <tr>
+            <td align="center" valign="top">
+                {if $sum_all_foreach == 1}
+                <p style="color:#00cccc; font-size: 16px;"><b>Achiziție Loyalty Kit: Pentru a beneficia de mai multe vouchere, te rugăm așteaptă livrarea unui singur Loyalty Kit înainte de a plasa comanda următoare. </b></p>
+            {/if}
+            </td>
+        </tr>
+        <!-- END Single IQOS Originals -->
+        
+
+        <tr>
+          <td align="center" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <!-- <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="30" style="border-bottom:solid 2px #adadad;">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr> -->
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="80">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <!-- BEGIN Data si numarul comenzii -->
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td width="90%" align="center" valign="top">                    
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                    {$order_info.timestamp|date_format:"`$settings.Appearance.date_format`"}
+                    <br>
+                    Num&#259;rul comenzii: #{$order_info.order_id}
+                    <br>
+                    Adresă livrare: 
+                    {if substr({$order_info.s_address}, 0, 1) == "_"}
+                                {{$order_info.s_address}|substr:1}
+                            {else}
+                                {$order_info.s_address}
+                            {/if} {if $order_info.s_address_2}
+                    {$order_info.s_address_2}{/if}, 
+                    {if $order_info.biulding_code}{$order_info.biulding_code}, {/if}
+                    {if $order_info.biulding_entry}{$order_info.biulding_entry}, {/if}
+                    {if $order_info.appartement_number}ap. {$order_info.appartement_number}, {/if}
+                    {if $order_info.floor} etaj {$order_info.floor}, {/if}
+                    {if $order_info.s_state_descr} {$order_info.s_state_descr} {/if}
+                    {if $order_info.s_city != $order_info.s_state_descr}, {$order_info.s_city}{/if}
+                    <br>
+                    {$order_info.payment_method.payment}
+                    <br>
+                     {if $order_info.shipping[0]['shipping']|strstr:"Livrare"}
+                    {$order_info.shipping[0]['shipping']|replace:"(alege locația)":""}
+                    {else}
+                    Livrare: {$order_info.shipping[0]['shipping']|replace:"(alege locația)":""}
+                       {/if}
+                    </span></td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+                <!-- END Data si numarul comenzii -->
+
+    
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="50">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <!-- BEGIN Tabela produse -->
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top">
+                    <table width="100%" cellpadding="0" cellspacing="1" style="color: #6e6e6e;{if $language_direction} direction: {$language_direction};{/if} background-color: #dddddd;">
+                      <tr>
+                        <th colspan="2" style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px;{$font_family}">{__("product")}</th>
+                        <th style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px; {$font_family}">{__("quantity")}</th>
+                        <th style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px; {$font_family}">{__("unit_price")}</th>
+                                {if $showUsedPointsColumn}
+                            <th style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px; {$font_family}">{__("used_points")}</th>
+                                {/if}
+                        {if $order_info.use_discount}
+                            <th style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px; {$font_family}">{__("discount")}</th>
+                        {/if}
+                        {if $order_info.taxes && $settings.General.tax_calculation != "subtotal"}
+                            <th style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px; {$font_family}">{__("tax")}</th>
+                        {/if}
+                        <th style=" background-color: #eeeeee; padding: 6px 10px; white-space: nowrap; font-size: 14px; {$font_family}">{__("subtotal")}</th>
+                      </tr>
+                        {fn_gather_additional_products_data($order_info.products, ['get_icon' => true, 'get_detailed' => true, 'lang_code' => 'ro'])}
+                          {foreach from=$order_info.products key="key" item="oi"}
+                              {if !$oi.extra.parent}
+                                  {$option_id = reset($oi['extra']['product_options']) }
+                                  {$variant_pairs = fn_get_image_pairs($option_id, 'variant_image', 'V', true, true,'ro') }
+                                  {if $variant_pairs}
+                                      {$oi['main_pair'] = reset($variant_pairs)}
+                                  {else}
+                                      {$oi['main_pair'] = fn_get_cart_product_icon($oi['product_id'], $oi['extra'])}
+                                      {if !$oi['main_pair']}
+                                          {$oi['main_pair'] = fn_get_image_pairs($oi['product_id'], 'product', 'M', true, true, 'ro')}
+                                      {/if}
+                                  {/if}
+                          
+                                  {if !$oi.extra.parent}
+                        <tr>
+                          <td valign="top" style="padding: 5px 10px; background-color: #ffffff; text-align: center; margin-top: 10px; min-width: 150px;">
+                            {if $oi.main_pair.icon.image_path}
+                                <img src="{$oi.main_pair.icon.image_path}" style="width:100%;" width="100">
+                            {elseif $oi.main_pair.detailed.image_path}
+                                <img src="{$oi.main_pair.detailed.image_path}" style="width:100%;" width="100">
+                            {else}
+                                <div class="no-image" style="width:100%;"><i class="glyph-image" title="{__("no_image")}"></i></div>
+                            {/if}
+                          </td>
+                          <td style="padding: 5px 10px; background-color: #ffffff; font-size: 14px; min-width: 150px; {$font_family}">
+                              {$oi.product|default:__("deleted_product") nofilter}
+                          {if $oi.product_options}<br/>{include file="common/options_info.tpl" product_options=$oi.product_options}{/if}    
+                          </td>
+                          <td style=" padding:5px 10px; background-color: #ffffff; text-align: center; font-size: 14px; {$font_family}">{$oi.amount}</td>
+                          <td style=" padding: 5px 10px; background-color: #ffffff; text-align: center; font-size: 14px; {$font_family}">{if $oi.extra.exclude_from_calculate}{__("free")}{else}{include file="common/price.tpl" value=$oi.original_price}{/if}</td>
+                          {if $showUsedPointsColumn}
+                              <td style=" padding: 5px 10px; background-color: #ffffff; text-align: center; font-size: 14px; {$font_family}">{$oi.extra.applied_points|default:0}</td>
+                          {/if}
+                          
+                          {if $order_info.use_discount}
+                          <td style=" padding: 5px 10px; background-color: #ffffff; text-align: center; font-size: 14px; {$font_family}">{if $oi.extra.discount|floatval}{include file="common/price.tpl" value=$oi.extra.discount}{else}&nbsp;-&nbsp;{/if}</td>
+                          {/if}
+                          {if $order_info.taxes && $settings.General.tax_calculation != "subtotal"}
+                              <td style=" padding: 5px 10px; background-color: #ffffff; text-align: center; font-size: 14px; {$font_family}">{if $oi.tax_value}{include file="common/price.tpl" value=$oi.tax_value}{else}&nbsp;-&nbsp;{/if}</td>
+                          {/if}
+
+                          <td style=" padding: 5px 10px; background-color: #ffffff; text-align: center; white-space: nowrap; font-size: 14px; {$font_family}"><b>{if $oi.extra.exclude_from_calculate}{__("free")}{else}{include file="common/price.tpl" value=$oi.display_subtotal}{/if}</b>&nbsp;</td>
+                          </tr>
+                                    {/if}
+
+                            {hook name="orders:extra_list"}{/hook}
+                            {/if}
+                        {/foreach}
+                      </table>
+                    </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <!-- END Tabela produse -->
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="30" style="border-bottom:solid 2px #adadad;">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="25">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+
+                <!-- BEGIN Subtotal total -->
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="color: #6e6e6e;{if $language_direction} direction: {$language_direction};{/if}">
+                      <tr>
+                        <td align="right">
+                          <table border="0" style="color: #6e6e6e;{if $language_direction} direction: {$language_direction};{/if} padding: 3px 0px 12px 0px;">
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}"><b>{__("subtotal")}:</b>&nbsp;</td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">{include file="common/price.tpl" value=$order_info.display_subtotal}</td>
+                            </tr>
+                            {if $order_info.discount|floatval}
+                                
+                            {/if}
+
+                            {if $order_info.subtotal_discount|floatval}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">
+                                <strong>{__("order_discount")}:</strong>
+                              </td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">
+                                {include file="common/price.tpl" value=$order_info.subtotal_discount}
+                              </td>
+                            </tr>
+                          {/if}
+
+                            {if $order_info.coupons}
+                                {foreach from=$order_info.coupons item="coupon" key="key"}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}"><b>{__("coupon")}:</b>&nbsp;</td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">{$key}</td>
+                            </tr>
+                                {/foreach}
+                            {/if}
+                            {if $order_info.taxes}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}"><b>{__("taxes")}:</b>&nbsp;</td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">&nbsp;</td>
+                            </tr>
+                            {foreach from=$order_info.taxes item=tax_data}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">{$tax_data.description}&nbsp;{include file="common/modifier.tpl" mod_value=$tax_data.rate_value mod_type=$tax_data.rate_type}{if $tax_data.price_includes_tax == "Y" && ($settings.Appearance.cart_prices_w_taxes != "Y" || $settings.General.tax_calculation == "subtotal")}&nbsp;{__("included")}{/if}{if $tax_data.regnumber}&nbsp;({$tax_data.regnumber}){/if}:&nbsp;
+                              </td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">{include file="common/price.tpl" value=$tax_data.tax_subtotal}
+                              </td>
+                            </tr>
+                                {/foreach}
+                            {/if}
+                            {if $order_info.tax_exempt == 'Y'}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}"><b>{__("tax_exempt")}</b></td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">&nbsp;</td>
+                            </tr>
+                            {/if}
+
+                            {if $order_info.payment_surcharge|floatval && !$take_surcharge_from_vendor}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">{$order_info.payment_method.surcharge_title|default:__("payment_surcharge")}:&nbsp;
+                              </td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}"><b>{include file="common/price.tpl" value=$order_info.payment_surcharge}</b></td>
+                            </tr>
+                              {/if}
+
+                              {if $order_info.shipping}
+                            <tr>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}"><b>{__("shipping_cost")}:</b>&nbsp;</td>
+                              <td style="text-align: right; white-space: nowrap; font-size: 14px; {$font_family}">{include file="common/price.tpl" value=$order_info.display_shipping_cost}</td>
+                            </tr>
+                            {/if}
+
+                            {hook name="orders:totals"}{/hook}
+
+                            <tr>
+                              <td colspan="2"><hr style="border: 0px solid #d5d5d5; border-top-width: 1px;" /></td>
+                            </tr>
+                            <tr>
+                              <td style="text-align: right; font-size: 14px; white-space: nowrap; text-align: right;">
+                                <strong>{__("total_cost")}:&nbsp;</strong>
+                              </td>
+                              <td style="text-align: right; font-size: 14px; white-space: nowrap; text-align: right;">
+                                <strong>{include file="common/price.tpl" value=$order_info.total}</strong>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                </td>
+                <td>&nbsp;</td>
+                </tr>
+                <!-- END Subtotal total -->
+
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="25" style="border-bottom:solid 2px #adadad;">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="45">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <!-- BEGIN IQOS -->
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="left" valign="top">
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D; font-weight: bold;">
+                      <strong>
+                        IQOS
+                      </strong>
+                    </span>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+                <!-- BEGIN IQOS -->
+
+                <!-- BEGIN Media Hit Mail -->
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td width="90%" align="left" valign="top">                    
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      Mediapost Hit Mail, <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">Str.</span> <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">Siriului,</span> <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">nr.</span> <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">42-46,</span> <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">et. 3,</span>
+                    </span>
+                    <br>
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      Sector 1
+                    </span>
+                    <br>
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      Bucure&#351;ti, BUCURE&#350;TI 014354
+                    </span>
+                    <br>
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      România
+                    </span>
+                    <br>
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      Telefon: 0800 030 333
+                    </span>
+                    <br>
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      Site Web: <a href="https://www.iqos.ro/" target="_blank" style="text-decoration:none; color:#34303D;">http://www.iqos.ro</a>
+                    </span>
+                    <br>
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      E-mail: <a href="mailto:contact@iqos.ro" target="_blank" style="text-decoration:none; color:#34303D;">contact@iqos.ro</a>
+                    </span>
+                  </td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+                <!-- END Media Hit Mail -->
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="40">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="25" style="border-bottom:solid 2px #adadad;">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="10">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+
+          {*      <!-- BEGIN Totul despre IQOSul tau-->
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td width="90%" align="center" valign="top">                    
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      <strong style="font-size: 28px; line-height: 35px;">
+                        Totul despre IQOS-ul t&#259;u
+                      </strong>
+                      <br><br>
+                      Descoper&#259; caracteristicile fiec&#259;rui dispozitiv &#351;i
+                      <br>
+                      afl&#259; mai multe despre cum func&#355;ioneaz&#259;
+                      <br>
+                      fiecare.</span>
+                    </td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+                <!-- BEGIN Totul despre IQOSul tau-->
+               *} 
+
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        
+        <div style="margin:10px"></div>
+<table border="0" width="480" cellpadding="0" cellspacing="0" align="center"
+  style="width:480px; margin: auto; background: #fbfaf8;" bgcolor="#fbfaf8" class="email-container">
+  <!-- Header: iqos, veev, club or heets -->
+        
+          <tr>
+    <td>
+      <!-- Main Email Body : BEGIN -->
+      <table class="width-100" style="background: #fffdfb" bgcolor="#fffdfb" border="0" width="480" cellpadding="0"
+        cellspacing="0">
+        <!-- content builder : BEGIN -->
+              <tr>
+                {*<td style='padding:0 0 23px; background: #f9f7f4;'>*}
+                <td style='background: #f9f7f4;'>
+                  
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tr>
+                        <td style='padding:0;' valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td style='padding-top:40px;;' align='center'>
+                                            
+                                            <img class='responsive-img' src='https://d3hvodq7wnhe8p.cloudfront.net/images/kura/ico/icons-48-help-light-theme%402x.png' alt='' width='auto' border='0' valign='top'>
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                             {* <tr>
+                                    <td width="482px" align="center" valign="top" style="font-size:1px">
+                                        <img src="https://d3hvodq7wnhe8p.cloudfront.net/design/Media/iqos_down_png_(2).png" alt="" width="300px" border="0" style="display:block;"></img>
+                                        <hr style="height: 1px; border-width:0; background-color: #bfbcbe; position: relative; bottom: 13px;">
+                                    </td>
+                                    
+                              </tr> *}
+        
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                           {*<td class='headline-24' style='padding:34px 0 14px; font-family: IQOS Sans, Inter, Arial, sans-serif; font-weight: bold; font-size: 24px; line-height:30px; mso-line-height-rule: exactly; color:#34303D;' align='center'>*}
+                                          <td class='headline-24' style='font-family: IQOS Sans, Inter, Arial, sans-serif; font-weight: bold; font-size: 24px; line-height:30px; mso-line-height-rule: exactly; color:#34303D;' align='center'>
+                                            
+                                            Ai nevoie de asistență?
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                              {*<tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0 37px; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303d;' align='center'>
+                                            
+                                            Get round-the-clock support from<br>the moment you choose IQOS.
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>*}
+                          </table>
+                        </td>
+                    </tr>
+                  </table>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td style='padding:30px 0 40px; background: #f9f7f4;'>
+                  
+                  <table width="90%" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tr>
+                        <td width='30%' style='padding:0;'valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td style='padding:0 30px 0 0;' align='center'>
+                                            
+                                            <img class='responsive-img' src='https://d3hvodq7wnhe8p.cloudfront.net/design/Media/phone.png' alt='' width='50px !important' border='0' valign='top' align='right'>
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                          </table>
+                        </td>
+                        <td width='70%' style='padding:0;'valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-17' style='padding:0 0 10px; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; font-weight: bold; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            <b>Contactează-ne telefonic</b>
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                              {*<tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0 0 10px; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            Nu ai găsit încă răspunsul la întrebarea ta? Contactează-ne telefonic! 
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>*}
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            Program: Luni-Vineri, între orele 8:00-20:00, Sâmbătă și Duminică, între orele 10:00-18:00
+                                           {* <a href='http://#' style='color: #34303D; text-decoration: none;'><font color='#34303D'>Visit &rarr;</font></a>*}<br>
+                                           0800030333
+                                           
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                          </table>
+                        </td>
+                    </tr>
+                  </table>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td style='padding:0 0 40px; background: #f9f7f4;'>
+                  
+                  <table width="90%" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tr>
+                        <td width='30%' style='padding:0;'valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td style='padding:0 30px 0 0;' align='center'>
+                                            
+                                            <img class='responsive-img' src='https://d3hvodq7wnhe8p.cloudfront.net/design/Media/text.png' alt='' width='50px !important' border='0' valign='top' align='right'>
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                          </table>
+                        </td>
+                        <td width='70%' style='padding:0;'valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-17' style='padding:0 0 10px; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; font-weight: bold; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            <b>Asistență în timp real</b>
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0 30px 10px 0; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            Discută cu experții noștri în timp real, pe chat.
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            Program: Luni-Vineri, între orele 8:00-20:00, Sâmbătă și Duminică, între orele 10:00-18:00
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                          </table>
+                        </td>
+                    </tr>
+                  </table>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td style='padding:0 0 40px; background: #f9f7f4;'>
+                  
+                  <table width="90%" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tr>
+                        <td width='30%' style='padding:0;'valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td style='padding:0 30px 0 0;' align='center'>
+                                            
+                                            <img class='responsive-img' src='https://d3hvodq7wnhe8p.cloudfront.net/design/Media/thumb.png' alt='' width='50px !important' border='0' valign='top' align='right'>
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                          </table>
+                        </td>
+                        <td width='70%' style='padding:0;'valign='top' valign="top">
+                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-17' style='padding:0 0 10px; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; font-weight: bold; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            <b>Trimite-ne un mesaj pe Messenger</b>
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0 30px 10px 0; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            
+                                            Discută cu unul dintre experții noștri prin Facebook Messenger.
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                              <tr >
+                                  <td >
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                                      <tr>
+                                          <td class='copytext-15' style='padding:0; font-family: IQOS Sans, Inter, Arial, sans-serif; font-size: 15px; line-height:24px; mso-line-height-rule: exactly; color:#34303D;' align='left'>
+                                            Program: Luni-Vineri, între orele 8:00-20:00, Sâmbătă și Duminică, între orele 10:00-18:00
+                                            
+                                          </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+        
+                              </tr>
+                          </table>
+                        </td>
+                    </tr>
+                  </table>
+                  
+                </td>
+              </tr>
+        <!-- content builder : END -->
+
+
+      </table>
+      <!-- Main Email Body : END -->
+    </td>
+  </tr>
+  
+  
+</table>
+<!-- Email wrapper : END -->
+
+         {*  <!-- BEGIN 2 produse promo DESKTOP -->
+        <tr>
+          <td align="center" valign="top" class="for_desktop">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td align="center" valign="top" width="105">&nbsp;</td>
+
+                  <td width="320px" align="center" valign="top" style="font-size:1px";>
+                   <a href="https://www.iqos.ro/iqos-originals-duo" target="_blank" ><img src="https://d3hvodq7wnhe8p.cloudfront.net/design/backend/media/images/email/IQOS_Originals_DUO.png" alt="" width="235px" height="368px" border="0" style="display:block;">
+                  </td>
+                  <td align="center" valign="top" width="105">&nbsp;</td>
+                  <td width="320px"  align="center" valign="top" style="font-size:1px;">
+                    <a href="https://www.iqos.ro/iqos-originals-one" target="_blank" ><img src="https://d3hvodq7wnhe8p.cloudfront.net/design/backend/media/images/email/IQOS_Originals_ONE.png" alt="" width="235px" height="368px" border="0" style="display:block;">
+                  </td>
+                  <td align="center" valign="top" width="105">&nbsp;</td>
+
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- BEGIN 2 produse promo DESKTOP -->
+
+
+
+        <!--[if !(gte mso 9)|(IE)]><!-->
+        
+        <!-- BEGIN 2 produse promo MOBILE -->
+        <tr>
+          <td align="center" valign="top">
+            <div class="for_mobile" style="display:none;max-height:0px;overflow:hidden;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td align="center" valign="top" style="font-size:1px;">
+                      <a href="https://www.iqos.ro/iqos-originals-duo" target="_blank">
+                        <img src="https://d3hvodq7wnhe8p.cloudfront.net/design/backend/media/images/email/IQOS_Originals_DUO.png" alt="" width="482px" border="0" style="display:block;">
+                      </a>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td align="center" valign="top" height="10">&nbsp;</td>
+                  </tr>
+
+                  <tr>
+                    <td align="center" valign="top" style="font-size:1px; padding-bottom: 20px;">
+                      <a href="https://www.iqos.ro/iqos-originals-one" target="_blank">
+                        <img src="https://d3hvodq7wnhe8p.cloudfront.net/design/backend/media/images/email/IQOS_Originals_ONE.png" alt="" width="482px" border="0" style="display:block;">
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <!-- END 2 produse promo MOBILE -->
+
+        <!-- <![endif] -->
+
+
+
+         <!-- BEGIN 1 produs promo  DESKTOP-->
+         <tr>
+          <td class="for_desktop" align="center" valign="top" style="padding-top: 20px;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td width="482px" align="center" valign="top" style="font-size:1px">
+                    <a href="https://www.iqos.ro/lil-solid" target="_blank" >
+                      <img src="https://d3hvodq7wnhe8p.cloudfront.net/design/backend/media/images/email/lil_SOLID.png" alt="" width="482px" height="314px" border="0" style="display:block;">
+                    </a>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+         <!-- END 1 produs promo -->
+
+
+         
+         <!-- BEGIN 1 produs promo MOBILE -->
+         <tr>
+          <td align="center" valign="top" style="padding-top: 10px;">
+            <div class="for_mobile" style="display:none;max-height:0px;overflow:hidden;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td width="482px" align="center" valign="top" style="font-size:1px">
+                      <a href="https://www.iqos.ro/lil-solid" target="_blank" >
+                        <img src="https://d3hvodq7wnhe8p.cloudfront.net/design/backend/media/images/email/lil_SOLID.png" alt="" width="482px" border="0" style="display:block;">
+                      </a>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+
+        <!-- END 1 produs promo -->
+*}
+        <tr>
+          <td height="45"></td>
+        </tr>
+
+    {*    <!-- BEGIN De fiecare data cand ai intrebari -->
+        <tr>
+          <td align="center" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td align="center" valign="top">
+                    <span width="90%" style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D;">
+                      De fiecare dat&#259; când ai întreb&#259;ri sau pur &#351;i simplu
+                      <br>
+                      vrei s&#259; afli mai multe despre IQOS, suntem la un telefon
+                     <br>
+                    distan&#355;&#259;.
+                    </span>
+                  </td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top" height="85">&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- END De fiecare data cand ai intrebari -->
+*}
+        
+        <!-- BEGIN Iqos nu este lipsit de riscuri -->
+        <tr>
+          <td align="center" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td width="5%">&nbsp;</td>
+                  <td width="90%" align="center" valign="top">
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 16px; line-height: 24px; color:#34303D; font-weight: bold;">
+                      IQOS nu este lipsit de riscuri.
+                      <br>
+                      Elibereaz&#259; nicotin&#259;, care provoac&#259; dependen&#355;&#259;.
+                      <br>
+                      IQOS este destinat adul&#355;ilor.
+                    </span>
+                  </td>
+                  <td width="5%">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- END Iqos nu este lipsit de riscuri -->
+
+        <tr>
+          <td align="center" valign="top" height="80">&nbsp;</td>
+        </tr>
+
+        <!-- BEGIN Together -->
+        <tr>
+          <td align="center" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top">
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 12px; line-height: 23px; color:#34303D; letter-spacing: 83%;">
+                      TOGETHER. FORWARD.
+                    </span>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- END Together -->
+
+        <tr>
+          <td align="center" valign="top" height="15">&nbsp;</td>
+        </tr>
+
+        <!-- BEGIN Echipa Iqos -->
+        <tr>
+          <td align="center" valign="top">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center" valign="top">
+                    <span style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 22px; line-height: 26px; color:#34303D;">
+                      Echipa IQOS
+                    </span>
+                  </td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- BEGIN Echipa Iqos -->
+
+        <tr>
+          <td align="center" valign="top" height="40">&nbsp;</td>
+        </tr>
+
+        <!-- BEGIN cel de luni 24 mai footer -->
+        <tr style="background-color: #34303D; border: none; ">
+          <td style="background-color: #34303D; letter-spacing: 0.25px; padding: 30px 85px 0; vertical-align:top;" valign="top" align="center">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+              <tr>
+                <td>
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tr>
+                      <td width="25%" align="left">
+                        <a href="https://www.iqos.ro/iqos3?utm_id=-RO&utm_campaign=-RO_footer_generic_emails_MagazinOnline_8-7-2019&utm_source=LAU&utm_medium=email&utm_content=Ponctual&utm_term=Footer_&utm_c=RO&utm_cgid=&utm_stid=&utm_ptid=&utm_a=(not+set)&utm_pb=(not+set)&utm_b=IQOS&utm_pid=&utm_cid=&cid=" class="footerlinks-14" style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 12px; line-height: 20px; color:#ffffff; text-decoration:none; white-space: nowrap;">
+                          Magazin Online
+                        </a>
+                      </td>
+                      <td width="25%" align="center">
+                        <a href="https://www.iqos.ro/unde-gasesc-iqos?utm_id=-RO&utm_campaign=-RO_footer_generic_emails_GasesteUnMagazin_8-7-2019&utm_source=LAU&utm_medium=email&utm_content=Ponctual&utm_term=Footer_&utm_c=RO&utm_cgid=&utm_stid=&utm_ptid=&utm_a=(not+set)&utm_pb=(not+set)&utm_b=IQOS&utm_pid=&utm_cid=&cid=" class="footerlinks-14" style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 12px; line-height: 20px; color:#ffffff; text-decoration:none; white-space: nowrap;">
+                          Gaseste un Magazin
+                        </a>
+                      </td>
+                      <td width="25%" align="center">
+                        <a href="https://www.iqos.ro/?utm_id=-RO&utm_campaign=-RO_footer_generic_emails_7-5-2019&utm_source=LAU&utm_medium=email&utm_content=Ponctual&utm_term=Footer_&utm_c=RO&utm_cgid=&utm_stid=&utm_ptid=&utm_a=(not+set)&utm_pb=(not+set)&utm_b=IQOS&utm_pid=&utm_cid=&cid" class="footerlinks-14" style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 12px; line-height: 20px; color:#ffffff; text-decoration:none; white-space: nowrap;">
+                          Live Chat
+                          </a>
+                      </td>
+                      <td width="25%" align="right">
+                        <a href="tel:0800030333" class="footerlinks-14" style="font-family: 'IQOS Sans', 'Inter', Arial, sans-serif; font-size: 12px; line-height: 20px; color:#ffffff; text-decoration:none; white-space: nowrap;">
+                          &nbsp;&nbsp;&nbsp;&nbsp;Contacteaza-ne
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" valign="top" height="30">&nbsp;</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tr>
+                      <td width="50%" style="padding: 0;" align="left">
+                        <a href="https://iqos.ro" >
+                          <img src="https://d3hvodq7wnhe8p.cloudfront.net/kbs/newslettere/nl-01-dcs-confirmare-cont/iqos-nl-2021-logos-IQOS-horizontal.png" alt="IQOS" width="86" align="left">
+                        </a>
+                      </td>
+
+                      <td width="50%" style="padding: 0; vertical-align: middle;" align="right">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0" align="right">
+                          <tr>
+                            <td style="padding: 0 0 0 0px;" align="right">
+                              <a href="https://www.facebook.com/iqos.ro">
+                                <img src="https://d3hvodq7wnhe8p.cloudfront.net/kbs/newslettere/nl-01-dcs-confirmare-cont/iqos-nl-2021-icon-facebook.png" alt="Facebook" width="22">
+                              </a>
+                            </td>
+            
+                            <td width="20%" style="padding: 0 0 0 5px;" align="right">
+                              <a href="https://www.instagram.com/iqos_ro/">
+                                <img src="https://d3hvodq7wnhe8p.cloudfront.net/kbs/newslettere/nl-01-dcs-confirmare-cont/iqos-nl-2021-icon-instagram.png" alt="Instagram" width="22"></a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" valign="top" height="30">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!-- END cel de luni 24 mai footer -->
+
+        <tr>
+          <td align="center" valign="top" height="25">
+          </td>
+        </tr>
+
+        <!-- BEGIN Tutunul dauneaza -->
+        <tr>
+          <td align="center" valign="top" >
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td width="5%" align="center" valign="top">&nbsp;</td>
+                  <td width="90%" align="center" valign="top">
+                    <span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 14px; color:#34303D;">
+                      Directiva Consiliului CE 89 / 622 / CEE
+                    </span>
+                    <br>
+                    <span style="font-family: Arial, Helvetica, sans-serif; font-size: 24px; line-height: 28px; color:#34303D; font-weight: bold;" >
+                      <strong>Tutunul d&#259;uneaz&#259; grav s&#259;n&#259;t&#259;&#355;ii</strong>
+                    </span>
+                  </td>
+                  <td width="5%" align="center" valign="top">&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <!-- BEGIN Tutunul dauneaza -->
+
+        <tr>
+          <td height="30"></td>
+        </tr>
+
+
+        <tr>
+          <td><!--[if (gte mso 9)|(IE)]>
+
+                                </td>
+
+                            </tr>
+
+                          </table>
+
+                        <![endif]-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
+
+
